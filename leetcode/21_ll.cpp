@@ -9,6 +9,7 @@ struct ListNode {
     ListNode(int x, ListNode *next) : val(x), next(next) {};
 };
 
+// first try
 class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
@@ -36,7 +37,7 @@ public:
     }
 };
 
-// better solution
+// generate a new list to save the result
 class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {

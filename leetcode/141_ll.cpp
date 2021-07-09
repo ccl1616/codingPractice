@@ -1,5 +1,3 @@
-// linked list cycle
-// this is a problem of Floyd Cycle detection
 
 struct ListNode {
     int val;
@@ -7,6 +5,7 @@ struct ListNode {
     ListNode(int x) : val(x), next(nullptr) {}
 };
 
+// algo: Floyd Cycle detection - basic
 class Solution {
 public:
     bool hasCycle(ListNode *head) {
