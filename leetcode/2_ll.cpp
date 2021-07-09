@@ -75,7 +75,7 @@ public:
     }
 };
 
-// v2
+// my v2
 class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
@@ -103,5 +103,91 @@ public:
             }
             return l3;
         }
+    }
+};
+
+// ref
+// recursion sol
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+		// base case
+        if(l1 == nullptr && l2 == nullptr) return nullptr;
+		
+        int sum = 0;
+        if(l1 != nullptr){
+            sum += l1->val;
+            l1 = l1->next;
+        }
+        if(l2 != nullptr){
+            sum += l2->val;
+            l2 = l2->next;
+        }
+        
+        ListNode* res = new ListNode(sum%10);
+		// if sum > 9 ( not a digit) carry 1 to next node
+        if(sum > 9){
+            if(l1 != nullptr) l1->val ++;
+            else if(l2 != nullptr) l2->val ++;
+            else{
+				// if both l1 and l2 are nullptr,  create new node with value 1
+                res->next = new ListNode(sum/10);
+                return res;
+            }
+        }
+        res->next = addTwoNumbers(l1, l2);
+        
+        return res;
+    }
+};
+
+// faster sol, 28ms 
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        ListNode *toReturn = l1;
+        int carry = 0;
+        while(true){
+            if (l2 != nullptr){
+                l1 -> val += l2->val;
+                l2 = l2 -> next;
+            }
+            l1 -> val += carry;
+            carry = l1 -> val > 9? 1:0;
+            l1 -> val %= 10;
+            if (l1 -> next == nullptr && (l2 != nullptr || carry != 0)){
+                l1 -> next = new ListNode();
+            }
+            else if (l1 -> next == nullptr) return toReturn;
+            l1 = l1 -> next;
+        }
+        return toReturn;
+    }
+};
+
+// faster sol 16ms
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        
+        ListNode* head = new ListNode(0);
+        ListNode* curr = head;
+        int carry = 0;
+        
+        while(l1 || l2 || carry) {
+            curr->val += l1 ? l1->val : 0;
+            curr->val += l2 ? l2->val : 0;
+            curr->val += carry;
+            carry = curr->val/10;
+            curr->val %= 10;
+            
+            l1 = l1 ? l1->next : l1;
+            l2 = l2 ? l2->next : l2;
+            if(l1 || l2 || carry)
+                curr->next = new ListNode(0);
+            curr = curr->next;
+        }
+        
+        return head;
     }
 };
