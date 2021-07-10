@@ -141,31 +141,7 @@ public:
     }
 };
 
-// faster sol, 28ms 
-class Solution {
-public:
-    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        ListNode *toReturn = l1;
-        int carry = 0;
-        while(true){
-            if (l2 != nullptr){
-                l1 -> val += l2->val;
-                l2 = l2 -> next;
-            }
-            l1 -> val += carry;
-            carry = l1 -> val > 9? 1:0;
-            l1 -> val %= 10;
-            if (l1 -> next == nullptr && (l2 != nullptr || carry != 0)){
-                l1 -> next = new ListNode();
-            }
-            else if (l1 -> next == nullptr) return toReturn;
-            l1 = l1 -> next;
-        }
-        return toReturn;
-    }
-};
-
-// faster sol 16ms
+// faster sol 16ms, this is really neat
 class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
@@ -175,7 +151,7 @@ public:
         int carry = 0;
         
         while(l1 || l2 || carry) {
-            curr->val += l1 ? l1->val : 0;
+            curr->val += l1 ? l1->val : 0; // if(l1) add l1->val
             curr->val += l2 ? l2->val : 0;
             curr->val += carry;
             carry = curr->val/10;
