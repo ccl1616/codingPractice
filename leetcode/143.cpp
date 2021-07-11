@@ -8,7 +8,7 @@ struct ListNode {
     ListNode(int x) : val(x), next(nullptr) {}
 };
 
-// first try
+// first try (failed)
 class Solution {
 public:
     void reorderList(ListNode* head) {
@@ -33,7 +33,10 @@ public:
                 topnode->next = nxt;
                 ptr = nxt;
             }
-            else return;
+            else {
+                ptr->next = nullptr;
+                return;
+            }
         }
         
         return;
