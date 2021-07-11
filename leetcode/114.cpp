@@ -1,3 +1,6 @@
+#include <iostream>
+#include <stack>
+using namespace std;
 
 struct TreeNode {
     int val;
@@ -58,4 +61,46 @@ public:
         return;
         
     }
+};
+
+// sol using stack
+class Solution {
+public:
+    void flatten(TreeNode* root) 
+    {
+        //empty tree
+        if(root == nullptr)
+            return;
+        
+        //use stack to keep storing elements 
+        stack<TreeNode*> stack;
+        stack.push(root);
+        
+        //somewhat similar to level order
+        //pop each element from the stack (starting from root)
+        //add its right and left child to the stack
+		//(explained below why right child is added before left)
+        //repeat till stack is empty.
+        while(!stack.empty())
+        {
+            TreeNode* currentNode = stack.top();
+            stack.pop();
+            
+            //push the right node first, because when we pop
+            //left child will be on top and we want left child first.
+            if(currentNode->right != NULL)
+                stack.push(currentNode->right);
+            
+            //push left child, this will be on top of stack now.
+            if(currentNode->left != NULL)
+                stack.push(currentNode->left);
+            
+            //assign the top most(left child) as right. 
+            if(!stack.empty())
+                currentNode->right = stack.top();
+            
+            //make all left children NULL. 
+            currentNode->left = NULL;
+        }
+    }    
 };
