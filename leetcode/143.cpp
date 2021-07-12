@@ -76,3 +76,35 @@ public:
         pptr->next = NULL;
     }
 };
+
+// my second try (AC), use a littl emit of math, just elementary math
+class Solution {
+public:
+    void reorderList(ListNode* head) {
+        if( (!head) || (!head->next) || (!head->next->next) ) return;
+        
+        std::stack<ListNode*> ns; //node stack
+        ListNode* ptr = head;
+        int count = 0;
+        while(ptr != nullptr) {
+            ns.push(ptr);
+            ptr = ptr->next;
+            count ++;
+        }
+        
+        ptr = head;
+        
+        int cur = (count % 2) ?count--:count;
+        for(int i = 0; i < cur/2 && ptr != nullptr; i ++) {
+            ListNode* topnode = ns.top(); ns.pop();
+            ListNode* nxt = ptr->next;
+            ptr->next = topnode;
+            topnode->next = nxt;
+            ptr = nxt;
+        }
+        if(count % 2) ptr->next->next = nullptr;
+        else ptr->next = nullptr;
+        
+        return;
+    }
+};
