@@ -9,13 +9,9 @@ int compare( const void *arg1 , const void *arg2) {
 }
 
 int main() {
-    queue <int> q1,q2;
-    for(int i = 0; i < 5; i ++)
-        q1.push(i+1);
-    q2.swap(q1);
-    while( !q2.empty()) {
-        cout << q2.front() << endl;
-        q2.pop();
-    }
+    int arr[3] = {0,0,0};
+    for(int i = 0; i < 3; i ++)
+        cout << arr[i] << endl;
+    cout << "-" << endl;
     return 0;
 }
