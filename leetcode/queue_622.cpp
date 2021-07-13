@@ -47,7 +47,7 @@ public:
     }
     
     bool isEmpty() {
-        if(capacity != -1 && cur_size == 0) return true;
+        if(capacity != -1 && cur_size == 0) return true; // capacity has been changed, but element num=0
         else return false;
     }
     
