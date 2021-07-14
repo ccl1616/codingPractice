@@ -3,6 +3,7 @@
 #include <algorithm>
 using namespace std;
 
+// using sort to solve
 class Solution {
 public:
     int findKthLargest(vector<int>& nums, int k) {
@@ -10,3 +11,5 @@ public:
         return nums[nums.size()-k];
     }
 };
+
+// using queue to solve
