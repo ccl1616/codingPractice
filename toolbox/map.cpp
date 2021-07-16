@@ -40,7 +40,8 @@ int main(){
     //    cout<<"Do not Find after erase"<<endl;
 
     map<int, int> num_map;
-    num_map.insert(pair<int, int>(5, 10));
+    // num_map.insert(pair<int, int>(5, 10));
+    num_map.insert(make_pair(5,10));
     map<int, int>::iterator iter;
     iter = num_map.find(5);
     if(iter != num_map.end())
