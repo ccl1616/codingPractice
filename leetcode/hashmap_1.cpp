@@ -8,6 +8,7 @@
   
 using namespace std;
 
+// sol, super clever, get really good use of hash map
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
