@@ -2,6 +2,7 @@
 #include <string>
 #include <algorithm>
 #include <unordered_map>
+#include <unordered_set>
 #include <vector>
 using namespace  std;
 
@@ -44,5 +45,44 @@ public:
             }
         }
         return ret;
+    }
+};
+
+// 929
+// sol
+class Solution {
+public:
+    int numUniqueEmails(vector<string>& emails) {
+        unordered_set<string> st;
+        for(string &email : emails) {
+            string cleanEmail;
+            for(char c : email) {
+                if(c == '+' || c == '@') break;
+                if(c == '.') continue;
+                cleanEmail += c;
+            }
+            cleanEmail += email.substr(email.find('@'));
+            st.insert(cleanEmail);
+        }
+        return st.size();
+    }
+};
+
+// me after sol
+class Solution {
+public:
+    int numUniqueEmails(vector<string>& emails) {
+        unordered_set<string> set;
+        for(auto i: emails) {
+            string cleanEmail;
+            for(char c: i) {
+                if(c == '+' || c == '@') break; // things after +@ should be ignore
+                if(c == '.') continue; // . should be ignore, goes to next iter
+                cleanEmail += c;
+            }
+            cleanEmail += i.substr(i.find('@'));
+            set.insert(cleanEmail);
+        }
+        return set.size();
     }
 };
