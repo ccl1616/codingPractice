@@ -35,7 +35,7 @@ public:
 
 // ===================
 // 111
-// tle
+// tle version
 class Solution {
 public:
     int minDepth(TreeNode* root) {
@@ -47,7 +47,24 @@ public:
                 return 1+right;
             else if(!right && left) 
                 return 1+left;
-            return 1 + min(minDepth(root->left),minDepth(root->right));
+            return 1 + min(minDepth(root->left),minDepth(root->right)); // here's a bug 
+        }
+    }
+};
+
+// AC, found out that I'was stupid
+class Solution {
+public:
+    int minDepth(TreeNode* root) {
+        if(!root) return 0;
+        else {
+            int left = minDepth(root->left);
+            int right = minDepth(root->right);
+            if(!left && right) 
+                return 1+right;
+            else if(!right && left) 
+                return 1+left;
+            return 1 + min(left,right);
         }
     }
 };
