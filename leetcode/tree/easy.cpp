@@ -33,7 +33,7 @@ public:
 };
 
 
-// ===================
+// ===============================================================================================
 // 111
 // tle version
 class Solution {
@@ -47,7 +47,7 @@ public:
                 return 1+right;
             else if(!right && left) 
                 return 1+left;
-            return 1 + min(minDepth(root->left),minDepth(root->right)); // here's a bug 
+            return 1 + min(minDepth(root->left),minDepth(root->right)); // here's the bug 
         }
     }
 };
@@ -66,5 +66,15 @@ public:
                 return 1+left;
             return 1 + min(left,right);
         }
+    }
+};
+
+// cleaner version
+class Solution {
+public:
+    int minDepth(TreeNode* root) {
+        if(root==NULL){ return 0;}
+        int l = minDepth(root->left), r = minDepth(root->right);
+        return 1 + (min(l, r) ? min(l, r) : max(l, r));
     }
 };
