@@ -31,3 +31,23 @@ public:
         }
     }
 };
+
+
+// ===================
+// 111
+// tle
+class Solution {
+public:
+    int minDepth(TreeNode* root) {
+        if(!root) return 0;
+        else {
+            int left = minDepth(root->left);
+            int right = minDepth(root->right);
+            if(!left && right) 
+                return 1+right;
+            else if(!right && left) 
+                return 1+left;
+            return 1 + min(minDepth(root->left),minDepth(root->right));
+        }
+    }
+};
