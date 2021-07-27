@@ -116,3 +116,29 @@ public:
         return nullptr;
     }
 };
+
+// ===============================================================================================
+// 112 path sum
+// myself, notes: the commented is incorrect, bc neg numbers exist
+class Solution {
+public:
+    bool hasPathSum(TreeNode* root, int targetSum) {
+        return dfs(root, targetSum);
+    }
+    bool dfs(TreeNode* root, int cur) {
+        if(!root) 
+            return false;
+        else if(!root->left && !root->right && root->val == cur)
+            return true;
+        else {
+            // if(root->val > cur) return false;
+            // else {
+            //     int val = cur - root->val;
+            //     return dfs(root->right, val) || dfs(root->left, val);
+            // }
+            int val = cur - root->val;
+            return dfs(root->right, val) || dfs(root->left, val);
+        }
+            
+    }
+};
