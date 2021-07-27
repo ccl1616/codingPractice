@@ -100,3 +100,19 @@ public:
 
 // ===============================================================================================
 // 108 height balanced tree
+class Solution {
+public:
+    TreeNode* sortedArrayToBST(vector<int>& nums) {
+        return func(nums, 0, nums.size()-1);
+    }
+    TreeNode* func(vector<int>& nums, int left, int right) {
+        if(left <= right) {
+            int mid = left + (right-left)/2; // bc the first round, mid could be at 0.25 or 0.75
+            TreeNode* root = new TreeNode(nums[mid]);
+            root->left = func(nums, left, mid-1);
+            root->right = func(nums, mid+1, right);
+            return root;
+        }
+        return nullptr;
+    }
+};
