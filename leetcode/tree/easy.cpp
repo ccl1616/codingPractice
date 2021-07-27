@@ -2,8 +2,6 @@
 #include <vector>
 using namespace std;
 
-// 104. Maximum Depth of Binary Tree, count the max deoth
-// sol
 struct TreeNode {
     int val;
     TreeNode *left;
@@ -13,7 +11,8 @@ struct TreeNode {
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
  
-
+// 104. Maximum Depth of Binary Tree, count the max deoth
+// sol
 class Solution {
 public:
     int maxDepth(TreeNode* root) {
