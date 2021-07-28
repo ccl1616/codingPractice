@@ -143,3 +143,36 @@ public:
     }
 };
 // ===============================================================================================
+
+// 98. 
+// me, WA, the val limit is wrong!
+class Solution {
+public:
+    bool isValidBST(TreeNode* root) {
+        if(!root) return true;
+        else if(!root->left && !root->right) return true;
+        else {
+            int l = (root->left)?root->left->val:-1;
+            int r = (root->right)?root->right->val:10001;
+            
+            if(root->val <= l || root->val >= r) return false;
+            else return isValidBST(root->left) && isValidBST(root->right);
+        }
+    }
+};
+
+// sol
+class Solution {
+public:
+    bool isValidBST(TreeNode* root) {
+        return valid(root, nullptr, nullptr);
+    }
+    bool valid(TreeNode* root, int* lower, int* upper) {
+        if(!root) return true;
+        if(lower && root->val <= *lower) return false;
+        if(upper && root->val >= *upper) return false;
+
+        return valid(root->left, lower, &(root->val)) && valid(root->right, &(root->val), upper);
+    }
+};
+// ===============================================================================================
