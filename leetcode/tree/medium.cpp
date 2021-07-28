@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <queue>
 using namespace std;
 
 struct TreeNode {
@@ -13,7 +14,7 @@ struct TreeNode {
 
 // ===============================================================================================
 // 102.
-// myself + geek
+// myself + geek O(n^2)
 class Solution {
 public:
     vector<vector<int>> levelOrder(TreeNode* root) {
@@ -47,5 +48,32 @@ public:
             int right = height(root->right);
             return max(left,right)+1;
         }
+    }
+};
+
+// 102. queue version, O(n)
+class Solution {
+public:
+    vector<vector<int>> levelOrder(TreeNode* root) {
+        vector<vector<int>> ret;
+        if(!root) return ret;
+
+        queue<TreeNode*> q;
+        q.push(root);
+        while(!q.empty()) {
+            vector<int> holder;
+            int N = q.size();
+
+            for(int i = 0; i < N; i ++) {
+                TreeNode* f = q.front();
+                q.pop();
+                holder.push_back(f->val);
+                if(f->left) q.push(f->left);
+                if(f->right) q.push(f->right);
+            }
+            ret.push_back(holder);
+            holder.clear();
+        }
+        return ret;
     }
 };
