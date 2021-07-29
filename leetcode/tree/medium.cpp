@@ -205,12 +205,12 @@ private:
 
 // 105
 // construct binary tree by preorder & inorder
-// sol1 use unordered map
+// sol1 , use unordered map
 class Solution {
 public:
     TreeNode* buildTree(vector<int>& P, vector<int>& I) {
         unordered_map<int, int> M;
-        // put them into map
+        // put them into map, num-(inorder)id
         for (int i = 0; i < I.size(); i++)
             M[I[i]] = i;
         return splitTree(P, M, 0, 0, I.size()-1);
@@ -218,12 +218,41 @@ public:
     
 private:
     TreeNode* splitTree(vector<int>& P, unordered_map<int, int>& M, int pix, int ileft, int iright) {
+        // pix: (preorder)index of root node
         int rval = P[pix], imid = M[rval];
         TreeNode* root = new TreeNode(rval);            
         if (imid > ileft)
             root->left = splitTree(P, M, pix+1, ileft, imid-1);
         if (imid < iright)
             root->right = splitTree(P, M, pix+imid-ileft+1, imid+1, iright);
+        return root;
+    }
+};
+
+// me after sol
+class Solution {
+public:
+    vector<int> pr;
+    vector<int> in;
+    unordered_map<int, int> M;
+    
+    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+        
+        this->in = inorder;
+        this->pr = preorder; 
+        for(int i = 0; i < inorder.size(); i ++) 
+            M[inorder[i]] = i;
+        return build(0, 0, inorder.size()-1);
+    }
+    
+    TreeNode* build(int pix, int ileft, int iright) {
+        int rval = this->pr[pix];
+        int imid = this->M[rval]; // inorder id
+        TreeNode* root = new TreeNode(rval);
+        if(imid > ileft)
+            root->left = build(pix+1, ileft, imid-1);
+        if(imid < iright)
+            root->right = build(pix+1+(imid-ileft), imid+1, iright);
         return root;
     }
 };
