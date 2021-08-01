@@ -2,8 +2,7 @@
 using namespace std;
 
 int main() {
-    int* arr;
-    arr = new int[10];
-    cout << arr[5] << endl;
+    vector<int> v(5,-1);
+    cout << v.size() << " " << v[2] << endl;
     return 0;
 }

@@ -21,7 +21,7 @@ public:
     }
 };
 
-// after sol
+// after sol, Kadane, non-dp
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
@@ -32,5 +32,35 @@ public:
             maxP = max(maxP, prices[i]-minP);
         }
         return maxP;
+    }
+};
+
+// sol dp
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        vector<int> dp(prices.size(), 0); // max profit on day i-th
+        int min_price = prices[0];
+        for(int i = 1; i < prices.size(); i ++) {
+            dp[i] = max( dp[i-1], prices[i]-min_price ); // profit from prev day OR profit from today
+            min_price = min(min_price, prices[i]);
+        }
+        return dp[prices.size()-1];
+    }
+};
+
+
+// ================================================================
+// 122
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        vector<int> dp(prices.size(), 0); // max profit on day i-th
+        int min_price = prices[0];
+        for(int i = 1; i < prices.size(); i ++) {
+            dp[i] = max( dp[i-1], prices[i]-min_price ); // profit from prev day OR profit from today
+            min_price = min(min_price, prices[i]);
+        }
+        return dp[prices.size()-1];
     }
 };
