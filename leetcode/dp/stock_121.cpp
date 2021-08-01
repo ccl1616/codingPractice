@@ -51,16 +51,15 @@ public:
 
 
 // ================================================================
-// 122
+// 122. after sol
+// add up the increasing difference 
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
-        vector<int> dp(prices.size(), 0); // max profit on day i-th
-        int min_price = prices[0];
-        for(int i = 1; i < prices.size(); i ++) {
-            dp[i] = max( dp[i-1], prices[i]-min_price ); // profit from prev day OR profit from today
-            min_price = min(min_price, prices[i]);
-        }
-        return dp[prices.size()-1];
+        if(prices.size() <= 1) return 0;
+        int sum = 0;
+        for(int i = 1; i < prices.size(); i ++) 
+            sum += max(0, prices[i]-prices[i-1]);
+        return sum;
     }
 };
