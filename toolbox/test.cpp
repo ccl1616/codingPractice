@@ -2,7 +2,10 @@
 using namespace std;
 
 int main() {
-    vector<int> v(5,-1);
-    cout << v.size() << " " << v[2] << endl;
+    map<string,bool> m;
+    m["hi"] = 1;
+    auto iter = m.find("hi");
+    if(iter != m.end()) cout << "1" << endl;
+    else cout << "0" << endl;
     return 0;
 }
