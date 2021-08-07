@@ -3,6 +3,7 @@ using namespace std;
 
 // 50
 // sol
+// https://leetcode.com/problems/powx-n/discuss/739646/C%2B%2B-Iterative-vs.-Recursive-Bitwise-Solutions-Explained-100-Time-80-space
 class Solution {
 public:
     double myPow(double x, int n) {
