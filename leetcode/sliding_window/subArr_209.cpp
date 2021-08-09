@@ -15,8 +15,8 @@ public:
 
             // 如果 subarray sum >= s，那就開始縮減 subarray
             while(windowSum >= target) {
+                // current window size = windowEnd-windowStart+1
                 minWindowSize = min(minWindowSize, windowEnd-windowStart+1); 
-                // 因為剩下的如果比較少、而且有要的subarr的話，那我們要的東西就會是在這後半
                 
                 windowSum -= nums[windowStart];
                 windowStart++;
