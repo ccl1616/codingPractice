@@ -34,7 +34,7 @@ public:
     }
 };
 
-// sol
+// sol 1.
 class Solution {
 public:
     vector<vector<int>> ans;
@@ -62,5 +62,36 @@ public:
             sum-=candidates[i];//back track mean remove value that previously added
             cur.pop_back();//remove the value that previously added to current 
         }      
+    }
+};
+
+// sol2, modify 1st
+// more tricy but neat sol
+class Solution {
+public:
+    vector<vector<int>> ans;
+    vector<int> cur;
+    // int sum;
+
+    vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+        // all possible combinations to be equal to the sum
+        bt(candidates, target, 0);
+        return ans;
+    }
+
+    void bt(vector<int>& candidates, int target, int i) {
+        
+        if(target == 0) {
+            ans.push_back(cur); 
+            return;
+        }
+        // not allowed
+        if(i >= candidates.size() || target < 0 || !candidates.size() ) 
+            return;
+        
+        cur.push_back(candidates[i]);
+        bt(candidates, target-candidates[i] , i);
+        cur.pop_back();
+        bt(candidates, target , i+1);
     }
 };
