@@ -2,6 +2,7 @@
 using namespace std;
 
 // 283
+// sol1
 // brutal force, after official sol
 // faster than 89%
 class Solution {
