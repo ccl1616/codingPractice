@@ -2,7 +2,7 @@
 using namespace std;
 
 // 31, next permutation
-
+// two pointers
 // ref sol1
 class Solution {
 public:
