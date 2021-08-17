@@ -1,38 +1,40 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<vector<int> > ans;
-int counter;
 
-void sub(vector<int> &nums, int i, vector<int> temp)
-{
-    if(i==nums.size())
-    {
-        counter ++;
-        ans.push_back(temp);
-        return;
+int myAtoi(string s) {
+    long long int num = 0;
+    bool isNeg = false;
+    int i = 0;
+    // leading white space
+    while( (int)s[i] == 32 ) i ++;
+    while( i < s.size() ) {
+        
+        if( s[i] == '-' ) {
+            if( !isdigit(s[i+1]) )
+                return 0;
+            isNeg = true;
+        }
+        else if( s[i] == '+' && s[i+1] == '-' )
+            return 0;
+        else if( !isdigit(s[i]) && s[i] != '+' ) 
+            break;
+        else if( s[i] != '+') {
+            num *= 10;
+            num += s[i]-'0';
+        }
+        i ++;
     }
-    
-    sub(nums, i+1, temp);
-    temp.push_back(nums[i]);
-    sub(nums, i+1, temp);
-}
-
-vector<vector<int>> subsets(vector<int>& nums) {
-    vector<int> temp;       
-    sub(nums, 0, temp); // or sub(nums, 0, vector<int> {});
-    return ans;
+    if( num > numeric_limits<int>::max() ) {
+        num = isNeg ?numeric_limits<int>::min():numeric_limits<int>::max();
+        return num;
+    }
+    return isNeg ? (-1)*num : num;
 }
 
 int main() {
-    vector<vector<int> > arr;
-    vector<int> tmp = {1,2,3};
-    vector<vector<int> > ret = subsets(tmp);
-    for(auto x: ret) {
-        for(int i = 0; i < x.size(); i ++) 
-            cout << x[i] << ",";
-        cout << endl;
-    }
-    cout << "count: " << counter << endl;
+    int sign = 1;
+    sign = (3 > 2) ?:-1;
+    cout << sign << endl;
     return 0;
 }

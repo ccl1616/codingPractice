@@ -20,7 +20,6 @@ public:
         }
     }
 };
-
 // sol2
 class Solution {
 public:
@@ -43,5 +42,74 @@ public:
         auto itr = upper_bound(begin(num)+i+1, end(num), num[i]);
         // swap them, done!
         swap(num[i], *itr);
+    }
+};
+// ================================================================================================
+
+// 8. Atoi ,string to num
+
+// my code, broken :')
+int myAtoi(string s) {
+    long long int num = 0;
+    bool isNeg = false;
+    int i = 0;
+    // leading white space
+    while( (int)s[i] == 32 ) i ++;
+    while( i < s.size() ) {
+        
+        if( s[i] == '-' ) {
+            if( !isdigit(s[i+1]) )
+                return 0;
+            isNeg = true;
+        }
+        else if( s[i] == '+' && s[i+1] == '-' )
+            return 0;
+        else if( !isdigit(s[i]) && s[i] != '+' ) 
+            break;
+        else if( s[i] != '+') {
+            num *= 10;
+            num += s[i]-'0';
+        }
+        i ++;
+    }
+    if( num > numeric_limits<int>::max() ) {
+        num = isNeg ?numeric_limits<int>::min():numeric_limits<int>::max();
+        return num;
+    }
+    return isNeg ? (-1)*num : num;
+}
+
+// sol, so good and straight foward !
+class Solution {
+public:
+    int myAtoi(string s) {
+        bool start = false;
+        int sign = 1;
+        long res = 0;
+        for (char c: s) {
+            if ('0' <= c && c <= '9') {
+                start = true;
+                res = res * 10 + (c - '0');
+                if (res > INT_MAX) {
+                    break;
+                }
+            } else if (!start && c == ' ') {
+                continue;
+            } else if (!start && c == '+') {
+                start = true;
+            } else if (!start && c == '-') {
+                sign = -1;
+                start = true;
+            } else {
+                break;
+            }
+        }
+        res *= sign;
+        if (res < INT_MIN) {
+            res = INT_MIN;
+        } else if (res > INT_MAX) {
+            res = INT_MAX;
+        }
+        return int(res);
     }
 };
