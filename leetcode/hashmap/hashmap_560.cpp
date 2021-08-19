@@ -20,3 +20,4 @@ public:
         return count;
     }
 };
+// https://leetcode.com/problems/subarray-sum-equals-k/discuss/431725/C%2B%2B-Performant-Solution-Explained-~100-Time-~95-Space
