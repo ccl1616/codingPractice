@@ -23,3 +23,29 @@ public:
         return l;
     }
 };
+
+// doing
+class Solution {
+public:
+    int func( vector<int> w, int total, int cur = 0, int ret = 1) {
+        for(auto x : w) {
+            cur += x;
+            if( cur > total) {
+                ret += 1;
+                cur = x;
+            }
+        }
+        return ret;
+    }
+    int shipWithinDays(vector<int>& w, int d) {
+        // return least capacity
+        int r = accumulate( w.begin(), w.end(), 0 );
+        int l = max ( r/d, *max_element( w.begin(), w.end()) );
+        while( l < r ) {
+            int m = (l + 1) / 2 ;
+            if( func( w, m ) <= d ) r = m;
+            else l = m + 1;
+        }
+        return l;
+    }
+};
