@@ -27,15 +27,22 @@ public:
 // doing
 class Solution {
 public:
-    int func( vector<int> w, int total, int cur = 0, int ret = 1) {
-        for(auto x : w) {
-            cur += x;
-            if( cur > total) {
-                ret += 1;
-                cur = x;
-            }
+    // int func( vector<int> w, int total, int cur = 0, int ret = 1) {
+    //     for(auto x : w) {
+    //         cur += x;
+    //         if( cur > total) {
+    //             ret += 1;
+    //             cur = x;
+    //         }
+    //     }
+    //     return ret;
+    // }
+    int func(vector<int>& ws, int tot_cap, int cur_cap = 0, int res = 1) {
+        for (auto w : ws) {
+            cur_cap += w;
+            if (cur_cap > tot_cap) ++res, cur_cap = w;
         }
-        return ret;
+        return res;
     }
     int shipWithinDays(vector<int>& w, int d) {
         // return least capacity
