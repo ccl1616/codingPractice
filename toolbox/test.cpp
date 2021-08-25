@@ -15,6 +15,16 @@ void func(int x) {
 }
 
 int main() {
-    func(1234567890);
+    vector<vector<int> > v;
+    vector<int> j;
+    vector<int> k;
+    for(int i = 0; i < 10; i ++) {
+        j.push_back(i);
+        k.push_back(i);
+    }
+    v.push_back(j);
+    v.push_back(k);
+    cout << v.size() << endl;
+    cout << v[0].size() << endl;
     return 0;
 }
