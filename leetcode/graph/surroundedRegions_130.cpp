@@ -7,6 +7,7 @@ public:
     void dfs(vector<vector<char>>& board, int row, int col, int m, int n) {
         if(row < 0 || row >= m || col < 0 || col >= n) return;
         if(board[row][col] != 'O') return;
+        // mark the margins as Q
         board[row][col] = 'Q';
         dfs(board, row-1, col, m , n);
         dfs(board, row+1, col, m , n);
