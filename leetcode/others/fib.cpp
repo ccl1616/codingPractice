@@ -2,7 +2,7 @@
 using namespace std;
 // 509. easy, simple fib
 
-// basic
+// sol1 basic
 class Solution {
 public:
     int fib(int n) {
@@ -12,7 +12,7 @@ public:
     }
 };
 
-// dp
+// sol2 dp
 class Solution {
 public:
     int fib(int n) {
