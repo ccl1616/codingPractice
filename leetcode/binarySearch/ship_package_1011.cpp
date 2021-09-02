@@ -40,7 +40,11 @@ public:
     int func(vector<int>& ws, int tot_cap, int cur_cap = 0, int res = 1) {
         for (auto w : ws) {
             cur_cap += w;
-            if (cur_cap > tot_cap) ++res, cur_cap = w;
+            if (cur_cap > tot_cap) { 
+                // ++res, cur_cap = w;
+                res ++;
+                cur_cap = w;
+            }
         }
         return res;
     }
