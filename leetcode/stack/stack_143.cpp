@@ -77,7 +77,7 @@ public:
     }
 };
 
-// my second try (AC), use a littl emit of math, just elementary math
+// my second try (AC), use a little bit of math, just elementary math
 class Solution {
 public:
     void reorderList(ListNode* head) {
