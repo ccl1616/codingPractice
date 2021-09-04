@@ -29,9 +29,7 @@ public:
                 if(tmp == '(' && cur != ')') return false;
                 else if(tmp == '{' && cur != '}') return false;
                 else if(tmp == '[' && cur != ']') return false;
-                else {
-                    ms.pop();
-                }
+                else ms.pop();
             }
         }
         if(!ms.empty()) return false; // check if the stack is empty
