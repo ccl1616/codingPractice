@@ -135,7 +135,9 @@ public:
                 if(f->right) q.push(f->right);
             }
             lev ++;
-            if(lev%2 == 0) reverse(holder.begin(), holder.end());
+            // if( !lev%2 ) reverse(holder.begin(), holder.end()); WA
+            if( !(lev%2) ) reverse(holder.begin(), holder.end());
+            if( lev%2 == 0 ) reverse(holder.begin(), holder.end());
             ret.push_back(holder);
             holder.clear();
         }
