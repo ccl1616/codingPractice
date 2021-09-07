@@ -25,7 +25,7 @@ public:
     
     void sub(vector<int> &nums, int i, vector<int> temp)
     {
-        if(i==nums.size())
+        if(i == nums.size())
         {
             ans.push_back(temp);
             return;
@@ -33,7 +33,7 @@ public:
         
         sub(nums, i+1, temp);
         temp.push_back(nums[i]);
-        sub(nums, i+1, temp);
+        sub(nums, i+1, temp); // backtracking
     }
     
     vector<vector<int>> subsets(vector<int>& nums) {

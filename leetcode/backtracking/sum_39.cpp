@@ -50,9 +50,9 @@ public:
 
     void bt(vector<int>& candidates,int target,int index)
     {
-        if(sum>target)return ;//base case if sum is greater then target then return 
+        if(sum > target)return ;//base case if sum is greater then target then return 
 
-        if(sum==target){
+        if(sum == target){
             ans.push_back(cur);//id sum is equal to target then just add current to result
         }
         for(int i=index;i<candidates.size();i++){
