@@ -55,11 +55,11 @@ public:
         if(sum == target){
             ans.push_back(cur);//id sum is equal to target then just add current to result
         }
-        for(int i=index;i<candidates.size();i++){
-            sum+=candidates[i];//and current value to sum
+        for(int i = index ; i < candidates.size() ; i ++){
+            sum += candidates[i];//and current value to sum
             cur.push_back(candidates[i]);//and current value to current vector
             bt(candidates,target,i);//again reccure for same index i
-            sum-=candidates[i];//back track mean remove value that previously added
+            sum -= candidates[i];//back track mean remove value that previously added
             cur.pop_back();//remove the value that previously added to current 
         }      
     }
