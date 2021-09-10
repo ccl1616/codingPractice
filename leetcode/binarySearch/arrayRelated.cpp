@@ -21,7 +21,8 @@ public:
             if (nums[m] > nums[r]) {
                 // little number is on the right
                 l = m + 1;
-            } else {
+            } 
+            else {
                 // little number is on the left
                 r = m;
             }
@@ -84,7 +85,9 @@ public:
                 lo = mid + 1; // target on the right side
         }
         // now hi == lo
-        return nums[lo] == target ? lo : -1;      
+        // return nums[lo] == target ? lo : -1;
+        if (nums[lo] == target) return lo;
+        else return -1;      
     }
 };
 
