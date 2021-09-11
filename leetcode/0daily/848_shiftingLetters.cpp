@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// shitty broken
 string shiftingLetters(string s, vector<int>& shifts) {
     string ret = s;
     int size = s.size();
