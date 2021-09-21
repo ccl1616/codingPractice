@@ -21,3 +21,20 @@ public:
         return ret;
     }
 };
+
+// sol, not faster but save space
+class Solution {
+public:
+    int findMaxConsecutiveOnes(vector<int>& nums) {
+        int cur = 0;
+        int ret = 0;
+        for(auto x : nums) {
+            if(x == 1) {
+                cur ++;
+                ret = max(ret, cur);
+            }
+            else cur = 0;
+        }
+        return ret;
+    }
+};
