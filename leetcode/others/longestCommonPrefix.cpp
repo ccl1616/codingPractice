@@ -13,7 +13,7 @@ string longestCommonPrefix(vector<string>& strs) {
         c = strs[0][i];
         // if current length is longer than the word length
         for(auto s : strs)
-            if(i+1 > s.size() || c != s[i]) return res;
+            if(i >= s.size() || c != s[i]) return res;
         // if the current character is shared by all of the words
         // then add to the result string
         res.push_back(c);
