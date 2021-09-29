@@ -3,11 +3,15 @@ using namespace std;
 
 
 int main() {
-    vector< vector<int> > big;
-    vector<int> ret = { 1,2,3 };
-    big.push_back(ret);
-    for(int i = 0; i < ret.size(); i ++)
-        cout << ret[i] << endl;
-    cout << "size: " << big.size() << endl;
-    cout << "size[0]: " << big[0].size() << endl;
+    int len = 18;
+    int k = 4;
+    int n = len / k, r = len % k; 
+    for (int i = 0; i < k; i++, r--) {
+        cout << (r > 0) << endl;
+        // cout << ( n + (r>0)) << endl;
+        for (int j = 0; j < n + (r > 0); j++) {
+            cout << "inner\n";
+        }
+        
+    }
 }
