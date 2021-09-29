@@ -51,6 +51,7 @@ public:
         // n : minimum guaranteed part size; r : extra nodes spread to the first r parts;
         int n = len / k, r = len % k; 
 
+        // put node in
         ListNode* node = root, *prev = nullptr;
         for (int i = 0; node && i < k; i++, r--) {
             parts[i] = node;
