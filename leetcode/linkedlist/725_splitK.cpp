@@ -39,6 +39,7 @@ struct ListNode {
 // };
 
 // sol
+// hint: If there are N nodes in the list, and k parts, then every part has N/k elements, except the first N%k parts have an extra one.
 class Solution {
 public:
     vector<ListNode*> splitListToParts(ListNode* root, int k) {
