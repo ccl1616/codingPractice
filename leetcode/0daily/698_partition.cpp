@@ -61,7 +61,10 @@ public:
         for(auto x:nums) 
             sum += x;
         size = sum / k; // entry size
+        // if the sum cannot be partioned, false
         if( k == 0 || (sum % k ) != 0 || nums.size() == 1 ) return false;
+
+        // set up recorder
         vector<bool> used(nums.size(), false);
         return backtrack(nums, used, k, 0, 0, size);
     }
