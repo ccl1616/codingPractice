@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+// dfs sol
 class Solution {
 public:
     bool exist(vector<vector<char>>& board, string word) {
@@ -19,7 +19,7 @@ public:
     }
 
     bool dfs(vector<vector<char>>& board, int i, int j, string word, int w) {
-        if( i <= 0 || j <= 0 || i >= board.size() || j >= board[0].size() || board[i][j] != word[w]) return false;
+        if( i < 0 || j < 0 || i >= board.size() || j >= board[0].size() || board[i][j] != word[w]) return false;
         if( w == word.size()-1) return true;
 
         if( board[i][j] == word[w] ) {
