@@ -49,3 +49,23 @@ public:
         return ret;
     }
 };
+
+// 119. get roeIndex pascal
+class Solution {
+public:
+    vector<int> getRow(int rowIndex) {
+        
+        vector<int> ret(rowIndex+1);
+        vector<int> prev(rowIndex+1);
+        for(int i = 0; i <= rowIndex; i ++) {
+            ret[0] = 1;
+            ret[i] = 1;
+            // we can't do it by incremental, since the value would be polluted!
+            // for(int j = 1; j < i; j ++)
+            //     ret[j] = ret[j] + ret[j-1];
+            for(int j = i-1; j > 0; j --)
+                ret[j] = ret[j] + ret[j-1];
+        }
+        return ret;
+    }
+};
